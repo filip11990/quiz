@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .quiz-container { max-width: 600px; margin: auto; text-align: left; }
+        .question { font-weight: bold; margin-top: 20px; }
+        .result { margin-top: 20px; font-size: 20px; font-weight: bold; }
+        .correct { color: green; }
+        .incorrect { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Quiz</h1>
+    <div class="quiz-container" id="quiz"></div>
+    <button onclick="checkAnswers()">Sprawdź wynik</button>
+    <div class="result" id="result"></div>
+    
+    <script>
+        const questions = [
+            { q: "Co to są multimedia?", options: ["a) Wyłącznie grafika", "b) Tylko pliki audio", "c) Połączenie różnych form przekazu informacji", "Wyłącznie treści wideo"], correct: "C" },
+            { q: "Pytanie 2?", options: ["A", "B", "C", "D"], correct: "C" },
+            // Dodaj resztę pytań...
+        ];
+
+        const quizContainer = document.getElementById("quiz");
+        questions.forEach((question, index) => {
+            const div = document.createElement("div");
+            div.innerHTML = `<p class='question'>${index + 1}. ${question.q}</p>` +
+                question.options.map(opt => 
+                    `<label><input type='radio' name='q${index}' value='${opt}'> ${opt}</label>`
+                ).join("<br>");
+            quizContainer.appendChild(div);
+        });
+
+        function checkAnswers() {
+            let score = 0;
+            let output = "";
+            questions.forEach((question, index) => {
+                const selected = document.querySelector(`input[name='q${index}']:checked`);
+                if (selected) {
+                    if (selected.value === question.correct) {
+                        score++;
+                        output += `<p class='correct'>${index + 1}. Poprawnie!</p>`;
+                    } else {
+                        output += `<p class='incorrect'>${index + 1}. Błędna odpowiedź. Poprawna: ${question.correct}</p>`;
+                    }
+                } else {
+                    output += `<p class='incorrect'>${index + 1}. Nie zaznaczono odpowiedzi!</p>`;
+                }
+            });
+            document.getElementById("result").innerHTML = `Twój wynik: ${score}/${questions.length}<br>` + output;
+        }
+    </script>
+</body>
+</html>
