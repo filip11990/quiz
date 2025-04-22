@@ -71,9 +71,6 @@
     <div class="result" id="result"></div>
     
     <script>
-        function escapeHTML(str) {
-    return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
         const questions = [
             { q: "Co to są multimedia?", options: ["a) Wyłącznie grafika", "b) Tylko pliki audio", "c) Połączenie różnych form przekazu informacji", "d) Wyłącznie treści wideo"], correct: "c) Połączenie różnych form przekazu informacji" },
             { q: "Który z formatów graficznych obsługuje animację?", options: ["a) JPG", "b) GIF", "c) PNG", "d) BMP"], correct: "b) GIF" },
@@ -101,8 +98,12 @@
         questions.forEach((question, index) => {
             const div = document.createElement("div");
             div.innerHTML = `<p class='question'>${index + 1}. ${question.q}</p>` +
+                function escapeHTML(str) {
+                    return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                }
+                
                 question.options.map(opt => 
-                    `<label><input type='radio' name='q${index}' value='${opt}'> ${opt}</label>`
+                    `<label><input type='radio' name='q${index}' value="${opt}"> ${escapeHTML(opt)}</label>`
                 ).join("<br>");
             quizContainer.appendChild(div);
         });
