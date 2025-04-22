@@ -93,16 +93,13 @@
             { q: "Co w największym stopniu wpływa na poprawę User Experience (UX)?", options: ["a) Stosowanie wyłącznie tekstu", "b) Multimedia zwiększające interaktywność", "c) Zwiększanie liczby reklam na stronie", "d) Długie artykuły bez grafik"], correct: "b) Multimedia zwiększające interaktywność" },
             { q: "Jaką rolę pełni sztuczna inteligencja (AI) w multimediach?", options: ["a) Tylko programowanie backendowe", "b) Wyłącznie przyspieszanie ładowania stron", "c) Automatyzację i personalizację treści multimedialnych", "d) Tylko projektowanie baz danych"], correct: "c) Automatyzację i personalizację treści multimedialnych" }
         ];
-                    function escapeHTML(str) {
-                    return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-                }
-                
+
         const quizContainer = document.getElementById("quiz");
         questions.forEach((question, index) => {
             const div = document.createElement("div");
             div.innerHTML = `<p class='question'>${index + 1}. ${question.q}</p>` +
                 question.options.map(opt => 
-                    `<label><input type='radio' name='q${index}' value="${opt}"> ${escapeHTML(opt)}</label>`
+                    `<label><input type='radio' name='q${index}' value='${opt}'> ${opt}</label>`
                 ).join("<br>");
             quizContainer.appendChild(div);
         });
