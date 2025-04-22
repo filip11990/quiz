@@ -71,6 +71,9 @@
     <div class="result" id="result"></div>
     
     <script>
+        function escapeHTML(str) {
+    return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
         const questions = [
             { q: "Co to są multimedia?", options: ["a) Wyłącznie grafika", "b) Tylko pliki audio", "c) Połączenie różnych form przekazu informacji", "d) Wyłącznie treści wideo"], correct: "c) Połączenie różnych form przekazu informacji" },
             { q: "Który z formatów graficznych obsługuje animację?", options: ["a) JPG", "b) GIF", "c) PNG", "d) BMP"], correct: "b) GIF" },
@@ -88,7 +91,7 @@
             { q: "Która technologia umożliwia tworzenie dynamicznych grafik w przeglądarce?", options: ["a) CSS", "b) HTML5 Canvas", "c) SQL", "d) FTP"], correct: "b) HTML5 Canvas" },
             { q: "Na czym polega rzeczywistość rozszerzona (AR)?", options: ["a) Całkowite zanurzenie w wirtualnym świecie", "b) Łączenie elementów cyfrowych z rzeczywistością", "c) Tylko odtwarzanie materiałów wideo", "d) Tworzenie grafiki bitmapowej"], correct: "b) Łączenie elementów cyfrowych z rzeczywistością" },
             { q: "Co jest główną zaletą wykorzystywania multimediów w marketingu?", options: ["a) Zmniejszenie zaangażowania użytkowników", "b) Trudniejsze zapamiętywanie reklam", "c) Skuteczniejsze budowanie relacji z odbiorcami", "d) Ograniczenie kreatywności twórców reklam"], correct: "c) Skuteczniejsze budowanie relacji z odbiorcami" },
-            { q: "Jaki element HTML służy do osadzania dźwięku na stronie?", options: ["a) <sound>", "b) <audio>", "c) <media>", "d) <music>"], correct: "b) <audio>" },
+            { q: "Jaki element HTML służy do osadzania dźwięku na stronie?", options: ["a) &lt;sound&gt;", "b) &lt;audio&gt;", "c) &lt;media&gt;", "d) &lt;music&gt;"], correct: "b) &lt;audio&gt;" },
             { q: "Która platforma internetowa jest przykładem rozrywki cyfrowej wykorzystującej multimedia?", options: ["a) LinkedIn", "b) Google Scholar", "c) Netflix", "d) Gmail"], correct: "c) Netflix" },
             { q: "Co w największym stopniu wpływa na poprawę User Experience (UX)?", options: ["a) Stosowanie wyłącznie tekstu", "b) Multimedia zwiększające interaktywność", "c) Zwiększanie liczby reklam na stronie", "d) Długie artykuły bez grafik"], correct: "b) Multimedia zwiększające interaktywność" },
             { q: "Jaką rolę pełni sztuczna inteligencja (AI) w multimediach?", options: ["a) Tylko programowanie backendowe", "b) Wyłącznie przyspieszanie ładowania stron", "c) Automatyzację i personalizację treści multimedialnych", "d) Tylko projektowanie baz danych"], correct: "c) Automatyzację i personalizację treści multimedialnych" }
